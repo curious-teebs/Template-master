@@ -29,3 +29,8 @@
 *.app
 *.idb
 *.tlog
+
+# folders to not include
+x64
+docs
+
