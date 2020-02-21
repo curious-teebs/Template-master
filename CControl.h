@@ -18,10 +18,10 @@ constexpr auto BUTT_2 = 32;
 class CControl 
 {
 private:
-    /** @brief Serial object used for serial communication with com port
-    */
-    Serial _com;
-    double last_push = cv::getTickCount();
+
+    Serial _com;///< Serial object used for serial communication with com port
+
+    double last_push = cv::getTickCount();///< Time of last button push
 
 public:
     /** @brief CControl constructor
@@ -54,11 +54,16 @@ public:
     * @return booling expression
     */
     bool set_data(int type, int channel, int val); 
-    /** @brief Calls get_data function and returns data and analog data and percent
+    /** @brief Calls get_data function and returns data type and analog data and percent
     *
     * @param int specifying data type, int specifying channel, memory address for data, and memory address for percent
     * @return booling expresion
     */
     bool get_analog(int, int, int&, int&);
+    /** @brief Calls get_data function to specificly get a digital signal
+    *
+    * @param int specifying data type, int specifying channel, memory address for data, and memory address for percent
+    * @return booling expresion
+    */
     bool get_butt(int&, int, int = 0);
 };

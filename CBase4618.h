@@ -12,12 +12,6 @@
 */
 class CBase4618
 {
-private:
-	/** @brief calls udpdate and draw on a loop until until it receivs q key
-*
-* @param none
-* @return nothing
-*/
 public:
 	/** @brief Contructor creates
 	*

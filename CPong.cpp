@@ -20,7 +20,7 @@ void CPong::new_set()
 	_padd_1 = Rect(_pad1_pos.x, _pad1_pos.y, _pad_w, _pad_h);
 	_padd_2 = Rect(_pad2_pos.x, _pad2_pos.y, _pad_w, _pad_h);
 	_ball_p = Point(500, 400);
-	_ball_v0 = Point(7, 7);
+	_ball_v0 = Point(8, 8);
 	_angle = (40 + (rand() % 11)) - (90 * (rand() % 2));
 }
 
@@ -29,8 +29,6 @@ void CPong::background()
 	putText(_canvas, _plyr_1, _plyr_1_origin, FONT_HERSHEY_SIMPLEX, _font_scale, _white);
 	putText(_canvas, _plyr_2, _plyr_2_origin, FONT_HERSHEY_SIMPLEX, _font_scale, _white);
 	line(_canvas, _mid_line_top, _mid_line_bot, _white);
-	//rectangle(_canvas, padd_1, white, -10, 1);
-	//rectangle(_canvas, padd_2, white, -10, 1);
 }
 
 void CPong::check_pos()
@@ -53,7 +51,6 @@ void CPong::check_pos()
 				_canvas = Mat::zeros(_canvas.size(), CV_8UC3);
 				background();
 				putText(_canvas, _over_s, _over_or, FONT_HERSHEY_SIMPLEX, _ovr_font_sz, _white);
-				//putText(_canvas, plyr_2, plyr_2_origin, FONT_HERSHEY_SIMPLEX, font_scale, white);
 				imshow("image", _canvas);
 				_done = 0;
 			}
