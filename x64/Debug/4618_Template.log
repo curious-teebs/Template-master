@@ -1,20 +1,4 @@
-﻿  4618_Template.cpp
-C:\Users\steph\source\repos\Template-master\CControl.h(24,40): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.h(29,31): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.h(34,38): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.h(40,35): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.h(77,34): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.h(88,39): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CSketch.h(26,30): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CSketch.h(27,30): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(59,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(64,23): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(92,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(96,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(99,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(101,24): warning C4309: '=': truncation of constant value
-C:\Users\steph\source\repos\Template-master\4618_Template.cpp(276,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  CPong.cpp
+﻿  CPong.cpp
 C:\Users\steph\source\repos\Template-master\CControl.h(24,40): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
 C:\Users\steph\source\repos\Template-master\CPong.h(29,31): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
 C:\Users\steph\source\repos\Template-master\CPong.h(34,38): warning C4244: 'initializing': conversion from 'int64' to 'double', possible loss of data
@@ -25,27 +9,26 @@ C:\Users\steph\source\repos\Template-master\CPong.cpp(7,33): warning C4267: '=':
 C:\Users\steph\source\repos\Template-master\CPong.cpp(36,27): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
 C:\Users\steph\source\repos\Template-master\CPong.cpp(63,33): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
 C:\Users\steph\source\repos\Template-master\CPong.cpp(92,26): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(104,28): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(111,53): warning C4244: '+=': conversion from 'double' to '_Tp', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(107,28): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(124,29): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(128,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(139,52): warning C4244: '+=': conversion from 'double' to '_Tp', possible loss of data
           with
           [
               _Tp=int
           ]
-C:\Users\steph\source\repos\Template-master\CPong.cpp(112,53): warning C4244: '+=': conversion from 'double' to '_Tp', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(140,52): warning C4244: '+=': conversion from 'double' to '_Tp', possible loss of data
           with
           [
               _Tp=int
           ]
-C:\Users\steph\source\repos\Template-master\CPong.cpp(116,32): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(120,33): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(152,29): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(157,36): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(168,30): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-C:\Users\steph\source\repos\Template-master\CPong.cpp(178,41): warning C4244: '+=': conversion from 'double' to '_Tp', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(164,31): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(168,32): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(171,30): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
+C:\Users\steph\source\repos\Template-master\CPong.cpp(181,41): warning C4244: '+=': conversion from 'double' to '_Tp', possible loss of data
           with
           [
               _Tp=int
           ]
-C:\Users\steph\source\repos\Template-master\CPong.cpp(191,27): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
-  Generating Code...
+C:\Users\steph\source\repos\Template-master\CPong.cpp(197,27): warning C4244: '=': conversion from 'int64' to 'double', possible loss of data
   4618_Template.vcxproj -> C:\Users\steph\source\repos\Template-master\x64\Debug\4618_Template.exe

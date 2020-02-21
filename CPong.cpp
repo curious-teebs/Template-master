@@ -100,6 +100,9 @@ void CPong::draw()
 	//if statement stops game from refreshing when score of 5 reached and done becomes 0
 	if (_done)
 	{
+		//blanks the screen
+		_canvas = Mat::zeros(_canvas.size(), CV_8UC3);
+
 		//frame per second measurement and display
 		_cur_frame = getTickCount();
 		_frames = _sec / ((_cur_frame - _last_frame) / _freq);
@@ -107,51 +110,19 @@ void CPong::draw()
 		_frame_s += std::to_string(_frames);
 		_frame_s.erase(9, _frame_s.length());
 		putText(_canvas, _frame_s, _fram_origin, FONT_HERSHEY_SIMPLEX, _font_scale, _white);
-		//ball position
-		_ball_p.x += _ball_v0.x * cos((_angle * PI) / 180);
-		_ball_p.y += _ball_v0.y * sin((_angle * PI) / 180);
-		//ball top and bottom collison detection
-		int top_edge = _ball_p.y - _radius;
-		int bot_edge = _ball_p.y + _radius;
-		_this_wall_col = getTickCount();
-		if ((bot_edge > 800 || top_edge < 0) && ((_this_wall_col - _last_wall_col) / _freq) > 2)
-		{
-			_ball_v0.y = _ball_v0.y * -1;
-			_last_wall_col = getTickCount();
-		}
-		//ball computer paddle collison detection
-		if (_ball_p.x > (_canvas.size().width - _radius - _pad_w))
-		{
-			_ball_v0.x = _ball_v0.x * -1;
-		}
-		//computer paddle edge detection
-		_pad2_pos.y = _ball_p.y - 75;
-		if (_pad2_pos.y > 650)
-		{
-			_pad2_pos.y = 650;
-		}
-		if (_pad2_pos.y < 0)
-		{
-			_pad2_pos.y = 0;
-		}
-		//player paddle vs ball collision
-		if (_ball_p.x < 15)
-		{
-			check_pos();
-		}
-		//draws paddle and ball position
-		_padd_2 = Rect(_pad2_pos.x, _pad2_pos.y, _pad_w, _pad_h);
-		_padd_1 = Rect(_pad1_pos.x, _pad1_pos.y, _pad_w, _pad_h);
+
+		//draws paddle and ball positions
 		rectangle(_canvas, _padd_1, _white, -10, 1);
 		rectangle(_canvas, _padd_2, _white, -10, 1);
 		circle(_canvas, _ball_p, _radius, _white, -1);
+
+		//draws scores and center line
+		background();
 		imshow("image", _canvas);
-		//blanks the screen
-		_canvas = Mat::zeros(_canvas.size(), CV_8UC3);
+
 		//time for frame count
 		_last_frame = getTickCount();
-		//draws new player score and midcount
-		background();
+	
 		//clears frame string of previous fps
 		int _pos = 0;
 		while ((_pos = _frame_s.find(" ")) != std::string::npos)
@@ -164,6 +135,38 @@ void CPong::draw()
 
 void CPong::update()
 {
+	//dtermines new ball postion ball position
+	_ball_p.x += _ball_v0.x * cos((_angle * PI) / 180);
+	_ball_p.y += _ball_v0.y * sin((_angle * PI) / 180);
+	//player paddle vs ball collision
+	if (_ball_p.x < 15)
+	{
+		check_pos();
+	}
+	//computer paddle edge detection
+	_pad2_pos.y = _ball_p.y - 75;
+	if (_pad2_pos.y > 650)
+	{
+		_pad2_pos.y = 650;
+	}
+	if (_pad2_pos.y < 0)
+	{
+		_pad2_pos.y = 0;
+	}
+	//ball computer paddle collison detection
+	if (_ball_p.x > (_canvas.size().width - _radius - _pad_w))
+	{
+		_ball_v0.x = _ball_v0.x * -1;
+	}
+	//ball top and bottom collison detection
+	int top_edge = _ball_p.y - _radius;
+	int bot_edge = _ball_p.y + _radius;
+	_this_wall_col = getTickCount();
+	if ((bot_edge > 800 || top_edge < 0) && ((_this_wall_col - _last_wall_col) / _freq) > 2)
+	{
+		_ball_v0.y = _ball_v0.y * -1;
+		_last_wall_col = getTickCount();
+	}
 	//gets delta time for velocity and acceleration equations
 	_current_time = getTickCount();
 	_delta_time = (_current_time - _last_time) / _freq;
@@ -186,6 +189,9 @@ void CPong::update()
 			_pad1_pos.y = 0;
 		}
 	}
+	//puts new paddle positons into paddle objects
+	_padd_2 = Rect(_pad2_pos.x, _pad2_pos.y, _pad_w, _pad_h);
+	_padd_1 = Rect(_pad1_pos.x, _pad1_pos.y, _pad_w, _pad_h);
 	//resets paddle velocity so it doeesn't move faster and faster
 	_padd_v = Point(0, 0);
 	_last_time = getTickCount();
