@@ -4,6 +4,9 @@
 #include <stdlib.h>     
 #include <time.h>       
 #include <stdio.h>  
+#include <chrono>
+#include <thread>
+#include <mutex>
 
 constexpr auto PI = 3.14159265;
 using namespace cv;
@@ -20,6 +23,11 @@ class CPong :
 	public CBase4618
 {
 private:
+
+	std::mutex esc_condition;///< Allows threads escape condition to be changed in main thread
+
+	bool _esc = true;///< Escape variable to exit program
+	
 	//button reset
 	double _butt_2 = getTickCount();///< Time of last button push
 	int _reset;///< The result from polling push button
@@ -117,6 +125,20 @@ private:
 	*/
 	void chng_score();
 
+	/** @brief Runs update in a loop until 'q' is pushed
+	*
+	* @param none
+	* @return nothing
+	*/
+	void update_thread();
+
+	/** @brief Runs draw in a loop until 'q' is pushed
+	*
+	* @param none
+	* @return nothing
+	*/
+	void draw_thread();
+
 public:
 
 	/** @brief CPong constructor
@@ -146,4 +168,11 @@ public:
 	* @return nothing
 	*/
 	void update();
+
+	/** @brief Starts seperate threads for update_thread and draw_thread and waits for a 'q' to end Pong game
+	*
+	* @param none
+	* @return nothing
+	*/
+	void start();
 };

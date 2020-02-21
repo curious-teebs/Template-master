@@ -13,24 +13,28 @@
 class CBase4618
 {
 public:
+
 	/** @brief Contructor creates
 	*
 	* @param none
 	* @return nothing
 	*/
 	CBase4618();
+
 	/** @brief CBase4618 deconstructor
 	*
 	* @param none
 	* @return nothing
 	*/
 	~CBase4618();
+
 	/** @brief calls udpdate and draw on a loop until until it receivs q key
 	*
 	* @param none
 	* @return nothing
 	*/
 	void run();
+
 protected:
 
 	/** @brief Mat object to create drawing window

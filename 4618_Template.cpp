@@ -276,7 +276,8 @@ int main(int argc, char* argv[])
         case 6: 
             srand(time(NULL));
             CPong game;
-            game.run();
+            game.start
+            ();
             break;
 		}
 	//} while (cmd != 0);

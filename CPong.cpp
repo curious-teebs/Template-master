@@ -1,6 +1,39 @@
 #include "stdafx.h"
 #include "CPong.h"
 
+void CPong::start()
+{
+	std::thread up_thread(&CPong::update_thread, this);
+	std::thread dr_thread(&CPong::draw_thread, this);
+	while (waitKey() != 'q'); 
+	esc_condition.lock();
+	_esc = false;
+	esc_condition.unlock();
+	up_thread.join();
+	dr_thread.join();
+}
+
+void CPong::update_thread()
+{
+	while (_esc)
+	{
+		auto end_time = std::chrono::system_clock::now() + std::chrono::milliseconds(33);
+		update();
+		std::this_thread::sleep_until(end_time);
+	}
+}
+
+void CPong::draw_thread()
+{
+	while (_esc)
+	{
+
+		auto end_time = std::chrono::system_clock::now() + std::chrono::milliseconds(33);
+		draw();
+		std::this_thread::sleep_until(end_time);
+	}
+}
+
 void CPong::chng_score()
 {
 	int pos = 0;
@@ -67,6 +100,7 @@ void CPong::check_pos()
 
 CPong::CPong(Size dim, int port)
 {
+	//draws and displays initial canvas
 	_canvas = Mat::zeros(Size(dim), CV_8UC3);
 	sketch_contr.init_com(port);
 	background();
@@ -79,24 +113,7 @@ CPong::~CPong()
 
 void CPong::draw()
 {
-	//resets the game
-	sketch_contr.get_butt(_reset, BUTT_2);
-	if (_reset && (((getTickCount() - _butt_2) / getTickFrequency()) > 0.2))
-	{
-		_not_held = 1;
-	}
-	if (!_reset && (((getTickCount() - _butt_2) / getTickFrequency()) > 0.2))
-	{
-		if (_not_held)
-		{
-			_butt_2 = getTickCount();
-			_plyr_2_scor = 0;
-			chng_score();
-			new_set();
-			_done = 1;
-			_not_held = 0;
-		}
-	}
+
 	//if statement stops game from refreshing when score of 5 reached and done becomes 0
 	if (_done)
 	{
@@ -118,6 +135,8 @@ void CPong::draw()
 
 		//draws scores and center line
 		background();
+
+		//displays drawn images
 		imshow("image", _canvas);
 
 		//time for frame count
@@ -135,7 +154,25 @@ void CPong::draw()
 
 void CPong::update()
 {
-	//dtermines new ball postion ball position
+	//checks button position and resets game if button is pushed
+	sketch_contr.get_butt(_reset, BUTT_2);
+	if (_reset && (((getTickCount() - _butt_2) / getTickFrequency()) > 0.2))
+	{
+		_not_held = 1;
+	}
+	if (!_reset && (((getTickCount() - _butt_2) / getTickFrequency()) > 0.2))
+	{
+		if (_not_held)
+		{
+			_butt_2 = getTickCount();
+			_plyr_2_scor = 0;
+			chng_score();
+			new_set();
+			_done = 1;
+			_not_held = 0;
+		}
+	}
+	//determines new ball postion ball position
 	_ball_p.x += _ball_v0.x * cos((_angle * PI) / 180);
 	_ball_p.y += _ball_v0.y * sin((_angle * PI) / 180);
 	//player paddle vs ball collision
@@ -170,7 +207,7 @@ void CPong::update()
 	//gets delta time for velocity and acceleration equations
 	_current_time = getTickCount();
 	_delta_time = (_current_time - _last_time) / _freq;
-	//gets joystick posion
+	//gets joystick position as a percentage
 	sketch_contr.get_data(ANALOG, 9, _y_joy_per);
 	_y_joy_per = 50 - ((_y_joy_per * 100) / 1024);
 	_padd_v += _padd_max_a * _delta_time;

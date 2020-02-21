@@ -1,6 +1,8 @@
 #pragma once
 #include "Serial.h"
 #include "opencv.hpp"
+#include <thread>
+#include <mutex>
 
 enum { DIGITAL = 0, ANALOG, SERVO };
 constexpr auto BUTT_1 = 33;

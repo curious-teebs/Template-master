@@ -29,7 +29,6 @@ bool CControl::get_data(int type, int channel, int& result)
     // temporary storage
     char buff[2];
   
-
     // Send TX string
     _com.write(tx_str.c_str(), tx_str.length());
     Sleep(10); // wait for ADC conversion, etc. May not be needed?
@@ -56,7 +55,6 @@ bool CControl::get_data(int type, int channel, int& result)
     }
     result = std::stod(rx_str);
     _com.flush();
-
     return false;
 }
 
