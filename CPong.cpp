@@ -67,15 +67,15 @@ void CPong::background()
 void CPong::check_pos()
 {
 	_this_coll = getTickCount();
-	if (((_this_coll - _last_ply1_coll) / _freq) > 3)
+	if (_ball_v0.x < 0)
 	{
 		int pad_top = _pad1_pos.y - 5;
 		int pad_bot = _pad1_pos.y + 155;
-		if ((_ball_p.y > pad_top) && (_ball_p.y < pad_bot))
+		if ((_ball_p.y > pad_top) && (_ball_p.y < pad_bot) && (_ball_p.x > 8))
 		{
 			_ball_v0.x = _ball_v0.x * -1;
 		}
-		else
+		else if(_ball_p.x < 0)
 		{
 			_plyr_2_scor += 1;
 			if (_plyr_2_scor == 5)
