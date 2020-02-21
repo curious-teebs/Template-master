@@ -1,0 +1,162 @@
+\hypertarget{class_c_base4618}{}\section{C\+Base4618 Class Reference}
+\label{class_c_base4618}\index{C\+Base4618@{C\+Base4618}}
+
+
+initializes Mat and \hyperlink{class_c_control}{C\+Control} objects  
+
+
+
+
+{\ttfamily \#include $<$C\+Base4618.\+h$>$}
+
+Inheritance diagram for C\+Base4618\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_base4618}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_base4618_abe2aad021452c08dd4a5726b44c5a0b7}{C\+Base4618} ()
+\begin{DoxyCompactList}\small\item\em Contructor creates. \end{DoxyCompactList}\item 
+\hyperlink{class_c_base4618_a22c0de299cef06c4ef49ace3a5b0be52}{$\sim$\+C\+Base4618} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_c_base4618}{C\+Base4618} deconstructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_base4618_a535e816d735d10d6048dd39cd893d393}{run} ()
+\begin{DoxyCompactList}\small\item\em calls udpdate and draw on a loop until until it receivs q key \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_c_base4618_a1e2f3c16eb99b5bfdd5d5254aee39ee6}{update} ()=0
+\begin{DoxyCompactList}\small\item\em virtual method update reads data from com port and updates the x and y positions \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_c_base4618_a0987bf28e9beed4753d3628fcddc3315}{draw} ()=0
+\begin{DoxyCompactList}\small\item\em virtual method draws a line in a direction on \+\_\+canvas depending on x and y values from update \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_c_base4618_a1b925f757247b33ca2072f777f24582d}{}\label{class_c_base4618_a1b925f757247b33ca2072f777f24582d} 
+cv\+::\+Mat \hyperlink{class_c_base4618_a1b925f757247b33ca2072f777f24582d}{\+\_\+canvas}
+\begin{DoxyCompactList}\small\item\em Mat object to create drawing window. \end{DoxyCompactList}\item 
+\hypertarget{class_c_base4618_ac838c5eaf9edfb1e607bd90e4e246a37}{}\label{class_c_base4618_ac838c5eaf9edfb1e607bd90e4e246a37} 
+\hyperlink{class_c_control}{C\+Control} \hyperlink{class_c_base4618_ac838c5eaf9edfb1e607bd90e4e246a37}{sketch\+\_\+contr}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_c_control}{C\+Control} opject to get data from com port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+initializes Mat and \hyperlink{class_c_control}{C\+Control} objects 
+
+Initializes Mat and \hyperlink{class_c_control}{C\+Control} objects and creates function decriptors for update and draw, and then run runs them on a loop
+
+\begin{DoxyAuthor}{Author}
+Stephen Cyr 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_base4618_abe2aad021452c08dd4a5726b44c5a0b7}{}\label{class_c_base4618_abe2aad021452c08dd4a5726b44c5a0b7} 
+\index{C\+Base4618@{C\+Base4618}!C\+Base4618@{C\+Base4618}}
+\index{C\+Base4618@{C\+Base4618}!C\+Base4618@{C\+Base4618}}
+\subsubsection{\texorpdfstring{C\+Base4618()}{CBase4618()}}
+{\footnotesize\ttfamily C\+Base4618\+::\+C\+Base4618 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Contructor creates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\hypertarget{class_c_base4618_a22c0de299cef06c4ef49ace3a5b0be52}{}\label{class_c_base4618_a22c0de299cef06c4ef49ace3a5b0be52} 
+\index{C\+Base4618@{C\+Base4618}!````~C\+Base4618@{$\sim$\+C\+Base4618}}
+\index{````~C\+Base4618@{$\sim$\+C\+Base4618}!C\+Base4618@{C\+Base4618}}
+\subsubsection{\texorpdfstring{$\sim$\+C\+Base4618()}{~CBase4618()}}
+{\footnotesize\ttfamily C\+Base4618\+::$\sim$\+C\+Base4618 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\hyperlink{class_c_base4618}{C\+Base4618} deconstructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_base4618_a0987bf28e9beed4753d3628fcddc3315}{}\label{class_c_base4618_a0987bf28e9beed4753d3628fcddc3315} 
+\index{C\+Base4618@{C\+Base4618}!draw@{draw}}
+\index{draw@{draw}!C\+Base4618@{C\+Base4618}}
+\subsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily virtual void C\+Base4618\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+virtual method draws a line in a direction on \+\_\+canvas depending on x and y values from update 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_c_pong_ae5c14ff09d074474ffd4f220b21dc00f}{C\+Pong}.
+
+\hypertarget{class_c_base4618_a535e816d735d10d6048dd39cd893d393}{}\label{class_c_base4618_a535e816d735d10d6048dd39cd893d393} 
+\index{C\+Base4618@{C\+Base4618}!run@{run}}
+\index{run@{run}!C\+Base4618@{C\+Base4618}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void C\+Base4618\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+calls udpdate and draw on a loop until until it receivs q key 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+\hypertarget{class_c_base4618_a1e2f3c16eb99b5bfdd5d5254aee39ee6}{}\label{class_c_base4618_a1e2f3c16eb99b5bfdd5d5254aee39ee6} 
+\index{C\+Base4618@{C\+Base4618}!update@{update}}
+\index{update@{update}!C\+Base4618@{C\+Base4618}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void C\+Base4618\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+virtual method update reads data from com port and updates the x and y positions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nothing 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_c_pong_abdf0d44329b40d14863ba134b031435a}{C\+Pong}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+Base4618.\+h\item 
+C\+Base4618.\+cpp\end{DoxyCompactItemize}

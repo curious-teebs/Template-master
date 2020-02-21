@@ -2,6 +2,9 @@
 #include "Serial.h"
 #include "opencv.hpp"
 
+enum { DIGITAL = 0, ANALOG, SERVO };
+constexpr auto BUTT_1 = 33;
+constexpr auto BUTT_2 = 32;
 /**
 *
 *@brief Communicates through serail port
@@ -11,10 +14,6 @@
 *@author Stephen Cyr
 *
 */
-enum { DIGITAL = 0, ANALOG, SERVO };
-constexpr auto BUTT_1 = 33;
-constexpr auto BUTT_2 = 32;
-
 class CControl 
 {
 private:

@@ -1,17 +1,4 @@
-/**
-*
-*@brief Runs the game pong. Updates 
-*
-*Runs simple physics engine to update ball and paddle positons and prints them to screen
-*Takes serial communication from potentiometer to control paddle velocity
-*Measures frame rate of the display 
-*
-*@author Stephen Cyr
-*
-*/
-
 #pragma once
-
 #include "CBase4618.h"
 #include <math.h>       
 #include <stdlib.h>     
@@ -19,10 +6,18 @@
 #include <stdio.h>  
 
 constexpr auto PI = 3.14159265;
-
 using namespace cv;
-
-class CPong : public CBase4618
+/**
+*
+*@brief Runs the game pong
+*
+*Runs simple physics engine to update ball and paddle positons and prints them to screen. Takes serial communication from potentiometer to control paddle velocity. Measures frame rate of the display 
+*
+*@author Stephen Cyr
+*
+*/
+class CPong : 
+	public CBase4618
 {
 private:
 	//button reset
