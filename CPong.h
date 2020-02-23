@@ -19,8 +19,7 @@ using namespace cv;
 *@author Stephen Cyr
 *
 */
-class CPong : 
-	public CBase4618
+class CPong : public CBase4618
 {
 private:
 

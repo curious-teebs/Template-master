@@ -79,25 +79,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBase4618.h" />
-    <ClInclude Include="CColour.h" />
     <ClInclude Include="CControl.h" />
-    <ClInclude Include="Client.h" />
+    <ClInclude Include="CGameObject.h" />
+    <ClInclude Include="CInvader.h" />
+    <ClInclude Include="CMissile.h" />
     <ClInclude Include="CPong.h" />
+    <ClInclude Include="CShip.h" />
     <ClInclude Include="CSketch.h" />
+    <ClInclude Include="CSpaceInvadersGame.h" />
     <ClInclude Include="Serial.h" />
-    <ClInclude Include="server.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="4618_Template.cpp" />
     <ClCompile Include="CBase4618.cpp" />
-    <ClCompile Include="CColour.cpp" />
     <ClCompile Include="CControl.cpp" />
-    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="CGameObject.cpp" />
+    <ClCompile Include="CInvader.cpp" />
+    <ClCompile Include="CMissile.cpp" />
     <ClCompile Include="CPong.cpp" />
+    <ClCompile Include="CShip.cpp" />
     <ClCompile Include="CSketch.cpp" />
+    <ClCompile Include="CSpaceInvadersGame.cpp" />
     <ClCompile Include="Serial.cpp" />
-    <ClCompile Include="server.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>

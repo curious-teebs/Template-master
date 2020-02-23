@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CPong.h"
+#include <atltypes.h>
 
 void CPong::start()
 {
