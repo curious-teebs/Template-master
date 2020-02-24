@@ -6,6 +6,7 @@
 #include <atltypes.h>
 
 using namespace cv;
+enum { ship = 0, missile, invader_x, invader_y };
 
 class CGameObject
 {
@@ -15,16 +16,18 @@ protected:
 	CRect _shape;
 	int _lives;
 public:
-	void move();
+	void move(int obj, int new_pos = 0);
 	bool collide(CGameObject& obj);
 	bool collide_wall(Size board);
 	void hit();
 	int get_lives() { return _lives; }
 	void set_lives(int lives) { _lives = lives; }
-	void set_pos(Point2f pos) { _position = pos; }
-	Point2f get_pos() { return _position; }
-	Point2f get_vel() { return _velocity; }
-	void set_vel(Point2f vel) { _velocity = vel; }
+	void set_pos(Point pos) { _position = pos; }
+	Point get_pos() { return _position; }
+	Point get_vel() { return _velocity; }
+	void set_vel(Point vel) { _velocity = vel; }
 	void draw(Mat& im);
+	Point get_top_left();
+	Point get_center();
 };
 
