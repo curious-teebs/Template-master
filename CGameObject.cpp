@@ -24,34 +24,49 @@ void CGameObject::move(int obj, int new_pos)
 	}
 }
 
-bool CGameObject::collide(CGameObject& obj)
+bool CGameObject::collide_inv(CGameObject& obj)
 {
 	CPoint topleft = _shape.TopLeft();
 	CPoint topright = topleft + CPoint(4, 0);
 	CPoint botright = _shape.BottomRight();
 	CPoint botleft = botright - CPoint(4, 0);
-	switch (_velocity.y)
+	if ((_velocity.y < 0) && (obj._shape.PtInRect(topleft) || obj._shape.PtInRect(topright) || obj._shape.PtInRect(botleft) || obj._shape.PtInRect(botright)))
 	{
-	case -10:
-		if (obj._shape.PtInRect(topleft) || obj._shape.PtInRect(topright) || obj._shape.PtInRect(botleft) || obj._shape.PtInRect(botright))
-		{
-			hit();
-			obj.hit();
-		}
-		break;
-	case 10:
-		if (true)
-		{
+		hit();
+		obj.hit();
+	}
+	return false;
+}
+bool CGameObject::collide_bot(CGameObject& obj)
+{
+	CPoint topleft = _shape.TopLeft();
+	CPoint topright = topleft + CPoint(50, 0);
+	CPoint botright = _shape.BottomRight();
+	CPoint botleft = botright - CPoint(50, 0);
+	if (obj._shape.PtInRect(topleft) || obj._shape.PtInRect(topright) || obj._shape.PtInRect(botleft) || obj._shape.PtInRect(botright))
+	{
+		obj._lives = 0;
+	}
+	return false;
+}
 
-		}
-		break;
+bool CGameObject::collide_ship(CGameObject& obj)
+{
+	CPoint topleft = _shape.TopLeft();
+	CPoint topright = topleft + CPoint(4, 0);
+	CPoint botright = _shape.BottomRight();
+	CPoint botleft = botright - CPoint(4, 0);
+	if ((_velocity.y > 0) && (obj._shape.PtInRect(topleft) || obj._shape.PtInRect(topright) || obj._shape.PtInRect(botleft) || obj._shape.PtInRect(botright)))
+	{
+		hit();
+		obj.hit();
 	}
 	return false;
 }
 
 bool CGameObject::collide_wall(Size board)
 {
-	if (_shape.TopLeft().y <= 0)
+	if (_shape.TopLeft().y <= 0 || _shape.BottomRight().y >= 800)
 	{
 		hit();
 	}

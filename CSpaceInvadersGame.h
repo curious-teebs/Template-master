@@ -8,8 +8,27 @@
 class CSpaceInvadersGame : public CBase4618
 {
 private:
+	//strings
+	int _font_scale = 1;
+	Scalar _white = Scalar(255, 255, 255);
+	int _pos;
+	Point _lives_pt = Point(100, 30);
+	Point _score_pt = Point(600, 30);
+	std::string _score_s = "Score: ";
+	std::string _live_s = "Lives: ";
+	std::string _space = " ";
+	int chnc_missile;
+	//timing for invader velocity increase
+	double _now;
+	double _last_wall_coll = getTickCount();
+	//invader dimensions
+	int dis_to_top = 50;
+	int dis_to_wall = 60;
+	int inv_width = 50;
+	int inv_height = 50;
+	int inbtwn_invs = 30;
 	int _dbl_bounce = 1;
-	int _bounce = 4;
+	int _bounce = 2;
 	Size _dim = Size(800, 800);
 	int _score = 0;
 	CShip _ship;

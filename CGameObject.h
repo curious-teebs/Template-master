@@ -17,7 +17,9 @@ protected:
 	int _lives;
 public:
 	void move(int obj, int new_pos = 0);
-	bool collide(CGameObject& obj);
+	bool collide_ship(CGameObject& obj);
+	bool collide_inv(CGameObject& obj);
+	bool collide_bot(CGameObject& obj);
 	bool collide_wall(Size board);
 	void hit();
 	int get_lives() { return _lives; }

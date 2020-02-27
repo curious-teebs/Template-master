@@ -28,7 +28,6 @@ void CPong::draw_thread()
 {
 	while (_esc)
 	{
-
 		auto end_time = std::chrono::system_clock::now() + std::chrono::milliseconds(33);
 		draw();
 		std::this_thread::sleep_until(end_time);
