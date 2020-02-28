@@ -18,7 +18,7 @@ public:
 	* @param Point of top left starting position, Point of the bottom right starting position, int containing amount of lives
 	* @return nothing
 	*/
-	CShip(Point top_l = Point(340, 770), Point bot_r = Point(460, 800), int lives = 3);
+	CShip(Point top_l = Point(370, 770), Point bot_r = Point(430, 800), int lives = 3);
 
 	/** @brief CShip deconstructor
 	*

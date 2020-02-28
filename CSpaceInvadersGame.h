@@ -17,14 +17,17 @@ class CSpaceInvadersGame : public CBase4618
 {
 private:
 
-	int _chnc_missile;///< Percentage a missile will be fire, divided by 10
+	int _level_up = 3;
+
+	int _per_of_missile = 1;///< percent of missile creation
+	int _chnc_missile;///< Holds random number between 0-1000
 
 	int _done = 1;///< Game end codition
 
 	//Colour variables
-	Scalar _red = Scalar(255, 0, 0);///< Red scalar
+	Scalar _red = Scalar(0, 0, 255);///< Red scalar
 	Scalar _white = Scalar(255, 255, 255);///< White scalar
-	Scalar _green = Scalar(0, 0, 255);///< Green scalar
+	Scalar _green = Scalar(0, 255, 0);///< Green scalar
 
 	//Score and life string
 	int _font_scale = 1;///< Size of font
@@ -46,7 +49,7 @@ private:
 
 	//Collision variables
 	int _dbl_bounce = 1;///< Int to prevent invaders from double bouncing off wall
-	int _bounce = 3;///< Amount of times the invaders will bounce off the ball
+	int _bounce = 2;///< Amount of times the invaders will bounce off the ball
 	Size _dim = Size(800, 800);///< Dimensions of the screen
 
 	//CGameObject initializations

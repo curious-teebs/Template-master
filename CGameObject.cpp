@@ -19,6 +19,10 @@ void CGameObject::move(int obj, int new_pos)
 		break;
 	case invader_y:
 		new_pos += _velocity.y;
+		if (new_pos > 750)
+		{
+			new_pos = 745;
+		}
 		_shape.MoveToY(new_pos);
 		break;
 	}
@@ -70,7 +74,7 @@ bool CGameObject::collide_wall(Size board)
 	{
 		hit();
 	}
-	if (_shape.BottomRight().x >= 800 || _shape.TopLeft().x <= 0)
+	if ((_shape.BottomRight().x >= 800 && _velocity.x > 0) || (_shape.TopLeft().x <= 0 && _velocity.x < 0))
 	{
 		return true;
 	}
@@ -85,14 +89,14 @@ void CGameObject::hit()
 	_lives -= 1;
 }
 
-void CGameObject::draw(Mat& im)
+void CGameObject::draw(Mat& im, Scalar colour)
 {
 	CPoint topleft = _shape.TopLeft();
 	CPoint botright = _shape.BottomRight();
 	int width = botright.x - topleft.x;
 	int height = botright.y - topleft.y;
 	Rect shape = Rect(topleft.x, topleft.y, width, height);
-	cv::rectangle(im, shape, Scalar(255, 255, 255), -10, 1);
+	cv::rectangle(im, shape, colour, -10, 1);
 }
 
 Point CGameObject::get_top_left()

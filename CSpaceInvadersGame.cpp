@@ -44,7 +44,7 @@ void CSpaceInvadersGame::update()
 		//check invaders collision with wall and reverses velocity
 		for (int num_of_inv = (_invaders.size() - 1); num_of_inv >= 0; num_of_inv--)
 		{
-			if (_invaders[num_of_inv].collide_wall(_dim) && _dbl_bounce)
+			if (_invaders[num_of_inv].collide_wall(_dim))
 			{
 				//_now = getTickCount();
 
@@ -55,10 +55,10 @@ void CSpaceInvadersGame::update()
 					_invaders[num_of_inv].set_vel(cur_vel);
 				}
 				_bounce--;
-				_dbl_bounce = 0;
+				//_dbl_bounce = 0;
 			}
 		}
-		_dbl_bounce = 1;
+		//_dbl_bounce = 1;
 
 		//checks collision between missiles and ship 
 		for (int num_of_mis = (_missile.size() - 1); num_of_mis >= 0; num_of_mis--)
@@ -83,6 +83,7 @@ void CSpaceInvadersGame::update()
 			{
 				_invaders.erase(_invaders.begin() + num_of_inv);
 				_score += 10;
+				_per_of_missile++;
 			}
 		}
 
@@ -130,16 +131,28 @@ void CSpaceInvadersGame::update()
 		{
 			for (int num_of_mis = (_invaders.size() - 1); num_of_mis >= 0; num_of_mis--)
 				_invaders[num_of_mis].move(invader_y, _invaders[num_of_mis].get_top_left().y);
-			_bounce = 3;
+			_bounce = 2;
 		}
 
 		//moves invaders side to side
 		for (int num_of_mis = (_invaders.size() - 1); num_of_mis >= 0; num_of_mis--)
 		{
-			Point new_pos = _invaders[num_of_mis].get_pos();
+			//Point new_pos = _invaders[num_of_mis].get_pos();
 			//new_pos.x += (_invaders[num_of_mis].get_vel().x * _delta_time);
-			_invaders[num_of_mis].move(invader_x, new_pos.x);
-			_invaders[num_of_mis].set_pos(_invaders[num_of_mis].get_top_left());
+			_invaders[num_of_mis].move(invader_x, _invaders[num_of_mis].get_top_left().x);
+			//_invaders[num_of_mis].set_pos(_invaders[num_of_mis].get_top_left());
+		}
+
+		//Increases speed of invader if only one is left and increases the chance of a missile
+		if ((_invaders.size() <= _level_up) && (_invaders.size() > 0))
+		{
+			Point fster_vel = _invaders[0].get_vel();
+			fster_vel.x = fster_vel.x * 2;
+			fster_vel.y = fster_vel.y * 2;
+			//_per_of_missile = _per_of_missile * 2;
+			for (int num_of_inv = (_invaders.size() - 1); num_of_inv >= 0; num_of_inv--)
+				_invaders[num_of_inv].set_vel(fster_vel);
+			_level_up--;
 		}
 
 		////////////////////////////////////////
@@ -160,9 +173,9 @@ void CSpaceInvadersGame::update()
 			_ship_pos = _ship.get_top_left().x;
 			_ship_pos += _ship_v * _delta_time;
 			//edge dectection
-			if (_ship_pos > 690)
+			if (_ship_pos > 740)
 			{
-				_ship_pos = 690;
+				_ship_pos = 740;
 			}
 			else if (_ship_pos < 0)
 			{
@@ -186,7 +199,7 @@ void CSpaceInvadersGame::update()
 		for (int num_of_mis = (_invaders.size() - 1); num_of_mis >= 0; num_of_mis--)
 		{
 			_chnc_missile = rand() % 1001;
-			if (_chnc_missile < 5)
+			if (_chnc_missile < _per_of_missile)
 			{
 				Point miss_strt_pt = _invaders[num_of_mis].get_center();
 				miss_strt_pt.y += (_inv_height / 2);
@@ -207,16 +220,23 @@ void CSpaceInvadersGame::draw()
 		putText(_canvas, "GAME OVER", Point(230, 50), FONT_HERSHEY_SIMPLEX, 2, _white);
 	}
 
+	if (_invaders.size() <= 0)
+	{
+		putText(_canvas, "YOU WIN", Point(250, 350), FONT_HERSHEY_SIMPLEX, 2, _white);
+	}
+
 	//Draws score and lives string
 	putText(_canvas, _score_s, _score_pt, FONT_HERSHEY_SIMPLEX, _font_scale, _white);
 	putText(_canvas, _live_s, _lives_pt, FONT_HERSHEY_SIMPLEX, _font_scale, _white);
-	_ship.draw(_canvas);
+
+	//Draws ship
+	_ship.draw(_canvas, _white);
 
 	//Draws invaders and missiles
 	for (int num_of_inv = (_invaders.size() - 1); num_of_inv >= 0; num_of_inv--)
-		_invaders[num_of_inv].draw(_canvas);
+		_invaders[num_of_inv].draw(_canvas, _green);
 	for (int num_of_mis = (_missile.size() - 1); num_of_mis >= 0; num_of_mis--)
-		_missile[num_of_mis].draw(_canvas);
+		_missile[num_of_mis].draw(_canvas, _red);
 
 	//Displays image
 	imshow("image", _canvas);
@@ -294,9 +314,11 @@ void CSpaceInvadersGame::check_butt(int butt)
 				_missile.clear();
 				_invaders.clear();
 				set_invaders();
+				_per_of_missile = 5;
 				_butt_2_time = getTickCount();
 				_done = 1;
 				_not_held_2 = 0;
+				_level_up = 4;
 			}
 		}
 		break;

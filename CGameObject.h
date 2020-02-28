@@ -114,7 +114,7 @@ public:
 	* @param Mat image to been drawn on
 	* @return nothing
 	*/
-	void draw(Mat& im);
+	void draw(Mat& im, Scalar colour);
 
 	/** @brief Gets the position of the top left corner
 	*
